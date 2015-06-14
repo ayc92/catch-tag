@@ -1,2 +1,5 @@
 /env
 .DS_Store
+/web/build/*.js
+/web/build/*.css
+/web/node_modules
