@@ -16,7 +16,10 @@ class TwitterAPIClient(object):
     # of our application, and potentially cause our application to reach its rate limit.
     TWITTER_CONSUMER_KEY = '7MY8c3BpeA95xNitXp7kNS9nU'
     TWITTER_CONSUMER_SECRET = 'L8qq9PZyRg6ieKGEKhZolGC0vJWLw8iEJ88DRdyOg'
+
+    # Twitter endpoints
     TWITTER_TOKEN_URL = 'https://api.twitter.com/oauth2/token'
+    TWITTER_SEARCH_TWEET_URL = 'https://api.twitter.com/1.1/search/tweets.json'
 
     def _get_base_64_bearer_token_creds(self):
         return b64encode('%s:%s' % (quote_plus(self.TWITTER_CONSUMER_KEY), quote_plus(self.TWITTER_CONSUMER_SECRET)))
