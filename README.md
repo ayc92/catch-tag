@@ -1,13 +1,6 @@
 # catch-tag
 Show the relationship between hashtags and word importance in tweets using those hashtags.
 
-Setup Play Scala Framework
-==========================
-1. Download Activator from https://www.playframework.com/download
-2. Unzip the folder
-3. Add the activator to PATH. On linux, add the following to ~/.bashrc
-```export PATH=$PATH:<pathToActivator>```
-
 Setup Node
 ==========
 Make sure you have node installed. If not, run:
