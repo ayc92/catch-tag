@@ -18,11 +18,12 @@ git clone git@github.com:ayc92/catch-tag.git catch-tag
 
 Build Js and Less
 ====================
-1. Install the necessary node modules by running:
+1. ```cd web```
+2. Install the necessary node modules by running:
 ```
 npm install
 ```
-2. Last but not least, build the front end. Run the following command to build and watch for changes to js or less:
+3. Last but not least, build the front end. Run the following command to build and watch for changes to js or less:
 ```
 npm run watch
 ```
