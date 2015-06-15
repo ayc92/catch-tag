@@ -27,8 +27,9 @@ Then install python dependencies in the env by running:
 ```
 pip install -r requirements.txt
 ```
-The main dependencies to note are `flask` and `uwsgi`.
-For simplicity's sake, the catch-tag flask app runs solely on a uwsgi server. `nginx` is a bit overkill, since we most likely won't be servicing a high load of requests.
+The main dependencies to note are `flask` and `uwsgi`. Instead of using the default flask development server, we use a uwsgi server, because it allows for more control over serving static content. We can serve static content out of directories besides `/static` without having to do hacky routes in our flask app. Way better...
+
+Normally, using `nginx` to serve static content, and having it forward dynamic requests to uwsgi provides a more robust infrastructure. However, in this case, adding nginx is a bit overkill, since we most likely will neither be servicing a large number of requests nor doing any complex static file serving (i.e. gzip).
 
 
 Setup Node
@@ -40,7 +41,7 @@ sudo apt-get install nodejs
 sudo apt-get install npm
 ```
 
-Build Js and Less
+Build JSX and Less
 ====================
 1. ```cd web```
 2. Install the necessary node modules by running:
