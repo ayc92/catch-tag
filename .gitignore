@@ -3,3 +3,4 @@
 /web/build/*.js
 /web/build/*.css
 /web/node_modules
+*.pyc

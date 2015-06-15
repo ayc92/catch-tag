@@ -1,0 +1,4 @@
+#!/bin/bash
+#The chown line is only necessary if you're using uwsgi with nginx.
+#chown :staff ./*
+env/bin/uwsgi --ini catch_tag.ini
