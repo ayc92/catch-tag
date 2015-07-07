@@ -23,8 +23,9 @@ class TwitterAPIClient(object):
 
     # Twitter endpoints
     TWITTER_TOKEN_URL = 'https://api.twitter.com/oauth2/token'
-    TWITTER_SEARCH_TWEET_URL = 'https://api.twitter.com/1.1/search/tweets.json'
     TWITTER_TRENDS_PLACE_URL = 'https://api.twitter.com/1.1/trends/place.json'
+    TWITTER_TRENDS_AVAILABLE_URL = 'https://api.twitter.com/1.1/trends/available.json'
+    TWITTER_SEARCH_TWEET_URL = 'https://api.twitter.com/1.1/search/tweets.json'
 
     def _get_base_64_bearer_token_creds(self):
         return b64encode('%s:%s' % (quote_plus(self.TWITTER_CONSUMER_KEY), quote_plus(self.TWITTER_CONSUMER_SECRET)))
@@ -55,7 +56,20 @@ class TwitterAPIClient(object):
         access_token = self._get_bearer_token()
         self.authorization_header = { 'Authorization': 'Bearer %s' % access_token }
 
-    def get_twitter_trends(self, woeid):
+    def get_countries_available_for_trends(self):
+        """
+        Get the names of all countries that Twitter has available trends information for.
+
+        Returns:
+            A dict mapping woeid -> country name
+        """
+        response = requests.get(
+            self.TWITTER_TRENDS_AVAILABLE_URL, headers=self.authorization_header)
+        places = response.json()
+        woeid_to_country = { p['woeid']: p['name'] for p in places if p['placeType']['name'] == 'Country'}
+        return woeid_to_country
+
+    def get_trends(self, woeid):
         """
         Get the names of trending topics using the given woeid.
         """
